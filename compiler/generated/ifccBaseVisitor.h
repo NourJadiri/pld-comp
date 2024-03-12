@@ -23,19 +23,35 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitSimpleDeclaration(ifccParser::SimpleDeclarationContext *ctx) override {
+  virtual antlrcpp::Any visitStmt(ifccParser::StmtContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitAffectationWithDeclaration(ifccParser::AffectationWithDeclarationContext *ctx) override {
+  virtual antlrcpp::Any visitVar_decl_stmt(ifccParser::Var_decl_stmtContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitSimpleAffectation(ifccParser::SimpleAffectationContext *ctx) override {
+  virtual antlrcpp::Any visitVar_assign_stmt(ifccParser::Var_assign_stmtContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitStmts(ifccParser::StmtsContext *ctx) override {
+  virtual antlrcpp::Any visitExpr(ifccParser::ExprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTerm(ifccParser::TermContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitConst(ifccParser::ConstContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitId(ifccParser::IdContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitParenthesis(ifccParser::ParenthesisContext *ctx) override {
     return visitChildren(ctx);
   }
 

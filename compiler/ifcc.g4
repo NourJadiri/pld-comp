@@ -2,23 +2,36 @@ grammar ifcc;
 
 axiom : prog EOF ;
 
-prog : 'int' 'main' '(' ')' '{' stmts* return_stmt'}' ;
+prog : 'int' 'main' '(' ')' '{' stmt* return_stmt'}' ;
 
+stmt : var_decl_stmt
+        | var_assign_stmt
+        | return_stmt;
 
+var_decl_stmt : TYPE ID ';' ;
+var_assign_stmt : ID '=' expr ';' ;
 
-var_decl: 'int' (VAR',')*VAR ';' # simpleDeclaration
+expr : term ; 
+
+term : factor;
+
+factor : CONST #const
+        | ID #id
+        | '(' expr ')' #parenthesis
         ;
 
-var_assign : 'int' VAR '=' (CONST | VAR) ';' # affectationWithDeclaration
-           | VAR '=' (CONST | VAR) ';' # simpleAffectation
-           ;
+return_stmt : RETURN expr ';' ;
 
-stmts : (var_decl | var_assign);
-return_stmt: RETURN (CONST | VAR) ';' ;
+TYPE : INT | CHAR | FLOAT | DOUBLE ;
+
+INT : 'int' ;
+CHAR : 'char' ;
+FLOAT : 'float' ;
+DOUBLE : 'double' ;
 
 RETURN : 'return' ;
 CONST : [0-9]+ ;
-VAR : [a-zA-Z_][a-zA-Z0-9_]* ;
+ID : [a-zA-Z_][a-zA-Z0-9_]* ;
 COMMENT : '/*' .*? '*/' -> skip ;
 DIRECTIVE : '#' .*? '\n' -> skip ;
 WS    : [ \t\r\n] -> channel(HIDDEN);

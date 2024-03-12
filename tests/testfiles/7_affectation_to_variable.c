@@ -1,8 +1,7 @@
 int main(){
     int a;
-    int b;
-    a = 5;
-    b = 7;
+    a = 6;
+    int b = a;
 
     return 0;
 }

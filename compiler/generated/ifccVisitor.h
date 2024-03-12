@@ -23,13 +23,21 @@ public:
 
     virtual antlrcpp::Any visitProg(ifccParser::ProgContext *context) = 0;
 
-    virtual antlrcpp::Any visitSimpleDeclaration(ifccParser::SimpleDeclarationContext *context) = 0;
+    virtual antlrcpp::Any visitStmt(ifccParser::StmtContext *context) = 0;
 
-    virtual antlrcpp::Any visitAffectationWithDeclaration(ifccParser::AffectationWithDeclarationContext *context) = 0;
+    virtual antlrcpp::Any visitVar_decl_stmt(ifccParser::Var_decl_stmtContext *context) = 0;
 
-    virtual antlrcpp::Any visitSimpleAffectation(ifccParser::SimpleAffectationContext *context) = 0;
+    virtual antlrcpp::Any visitVar_assign_stmt(ifccParser::Var_assign_stmtContext *context) = 0;
 
-    virtual antlrcpp::Any visitStmts(ifccParser::StmtsContext *context) = 0;
+    virtual antlrcpp::Any visitExpr(ifccParser::ExprContext *context) = 0;
+
+    virtual antlrcpp::Any visitTerm(ifccParser::TermContext *context) = 0;
+
+    virtual antlrcpp::Any visitConst(ifccParser::ConstContext *context) = 0;
+
+    virtual antlrcpp::Any visitId(ifccParser::IdContext *context) = 0;
+
+    virtual antlrcpp::Any visitParenthesis(ifccParser::ParenthesisContext *context) = 0;
 
     virtual antlrcpp::Any visitReturn_stmt(ifccParser::Return_stmtContext *context) = 0;
 
